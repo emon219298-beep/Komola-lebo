@@ -1,532 +1,776 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
+
+    <script>
+window.onload = function() {
+    window.Adsgram.init({ blockId: "int-30481" }).show();
+}
+    </script>
+    
+    <script type="text/javascript">
+  setTimeout(function() {
+    window.location.href = "https://t.me/appolexbot?startapp"; // আপনার লিঙ্ক দিন
+  },8000); // ১০ সেকেন্ড (১০,০০০ মিলিসেকেন্ড)
+    </script>
+    
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Smart Money Pro - Your Earning Destination</title>
-    
-    <!-- Telegram WebApp -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    
-    <!-- AdsGram Ad Script -->
-    <script src="https://cdn.adsgram.ai/js/adsgram.js"></script>
-    
-    <!-- Monetag Ad Zones -->
-    <script src='//libtl.com/sdk.js' data-zone='9730885' data-sdk='show_9730885'></script>
-    <script src='//libtl.com/sdk.js' data-zone='9500387' data-sdk='show_9500387'></script>
-    <script src='//libtl.com/sdk.js' data-zone='9715370' data-sdk='show_9715370'></script>
-    
-    <!-- GigaPub Ad SDK -->
-    <script src="https://ad.gigapub.tech/script?id=6316"></script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet"> 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>সিনেমা স্ট্রিম - টেলিগ্রাম মিনি অ্যাপ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- টেলিগ্রাম ওয়েব অ্যাপ SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- এডসগ্রাম SDK -->
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', 'Hind Siliguri', sans-serif; 
-            background-color: #f8fafc; 
-            color: #1e293b; 
-            transition: background-color 0.3s, color 0.3s;
-            padding-bottom: 70px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
         }
-        .dark-mode {
-            background-color: #1e293b;
-            color: #f1f5f9;
+
+        body {
+            background: radial-gradient(circle at 10% 20%, rgba(8, 12, 25, 1) 0%, rgba(2, 5, 15, 1) 100%);
+            padding: 1rem;
+            color: #f5f7fe;
+            min-height: 100vh;
         }
-        .dark-mode .card-bg { 
-            background-color: #334155; 
-            border-color: #475569;
+
+        /* আধুনিক স্ক্রলবার */
+        ::-webkit-scrollbar {
+            width: 4px;
         }
-        .card-bg { 
-            background-color: #ffffff; 
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border-radius: 16px;
+        ::-webkit-scrollbar-track {
+            background: #1e1f2c;
+            border-radius: 10px;
         }
-        .text-accent { color: #ff8c00; }
-        .btn-accent { 
-            background: linear-gradient(135deg, #ff8c00, #ff6b00);
-            color: white; 
-            font-weight: bold;
-            transition: all 0.2s ease;
+        ::-webkit-scrollbar-thumb {
+            background: #ff6a3d;
+            border-radius: 10px;
         }
-        .btn-accent:active { transform: scale(0.96); }
-        .btn-outline-accent { 
-            border: 2px solid #ff8c00; 
-            color: #ff8c00; 
-            font-weight: bold;
+
+        .main-content {
+            display: block;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .input-field { 
-            background-color: #f1f5f9; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 12px;
-            padding: 12px;
-        }
-        .dark-mode .input-field {
-            background-color: #475569;
-            border-color: #64748b;
+
+        /* লোডিং অ্যানিমেশন */
+        .loading-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 20, 35, 0.96);
+            backdrop-filter: blur(20px);
             color: white;
+            padding: 22px 32px;
+            border-radius: 32px;
+            z-index: 1002;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid rgba(255, 106, 61, 0.5);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,106,61,0.2);
+            animation: fadeInScale 0.25s ease;
         }
-        .main-page { display: none; }
-        .main-page.active { display: flex; animation: fadeIn 0.3s ease; }
-        .sub-page { display: none; }
-        .sub-page.active { display: block; animation: fadeIn 0.3s ease; }
-        .bottom-nav a.active { color: #ff8c00; }
-        .dark-mode .bottom-nav { background-color: #334155; border-color: #475569; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .btn-loading {
-            opacity: 0.6;
-            pointer-events: none;
+
+        .loading-notification i {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: #ff6a3d;
+            display: block;
         }
-        .job-btn {
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* স্লাইডার সেকশন (গ্লাসমরফিক) */
+        .slider-section {
+            margin-bottom: 2.2rem;
+            background: rgba(12, 18, 30, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1rem 0.8rem;
+            border: 1px solid rgba(255, 106, 61, 0.25);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
             transition: all 0.2s ease;
         }
-        .job-btn:active { transform: scale(0.96); }
-        .ad-card {
-            background: linear-gradient(135deg, #ff8c00, #ff6b00);
+
+        .section-title {
+            font-size: 1.55rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-left: 0.8rem;
+            border-left: 6px solid #ff6a3d;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #fff, #ffb88c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .dark-mode .text-slate-800 { color: #f1f5f9; }
-        .dark-mode .text-gray-500 { color: #cbd5e1; }
-        .dark-mode .bg-white { background-color: #334155; }
+
+        .section-title i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #ff6a3d;
+            font-size: 1.5rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 1.8rem;
+            background: #03060e66;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.3rem;
+        }
+
+        .thumb-video-card {
+            background: linear-gradient(145deg, #121a27, #0b101e);
+            border-radius: 1.8rem;
+            overflow: hidden;
+            width: 100%;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            box-shadow: 0 15px 30px -10px black;
+        }
+
+        .thumb-video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 35px -14px #ff6a3d30;
+        }
+
+        .thumb-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #000000;
+            cursor: pointer;
+        }
+
+        .thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease, filter 0.3s;
+        }
+
+        .thumb-wrapper:hover .thumb-img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .play-overlay i {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 0 4px 14px rgba(0,0,0,0.6);
+            transition: all 0.2s ease;
+            filter: drop-shadow(0 0 6px #ff6a3d);
+        }
+
+        .play-overlay:hover i {
+            transform: scale(1.12);
+            color: #ff6a3d;
+        }
+
+        .card-info {
+            padding: 1rem 1rem 1.2rem;
+        }
+
+        .video-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.9rem;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .video-title i {
+            color: #ff6a3d;
+            font-size: 0.9rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.7rem 0.3rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.3px;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-download {
+            background: linear-gradient(95deg, #1e2a47, #101827);
+            color: #eef3ff;
+            border: 1px solid #3e5a8f;
+            box-shadow: 0 6px 12px -6px rgba(0,0,0,0.4);
+        }
+
+        .btn-watch {
+            background: linear-gradient(95deg, #ff5e2e, #ff3c00);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 14px -4px #ff3c0080;
+        }
+
+        .unlock-counter {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn.locked {
+            background: #2a2f3e;
+            opacity: 0.85;
+            filter: grayscale(0.1);
+            box-shadow: none;
+        }
+
+        .btn.unlocked {
+            background: linear-gradient(95deg, #1f9a4e, #0d6e36);
+            opacity: 1;
+            box-shadow: 0 4px 12px #0d6e3660;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1.2rem;
+        }
+
+        .dot {
+            width: 28px;
+            height: 5px;
+            background: #3d445b;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .dot.active {
+            background: #ff6a3d;
+            width: 48px;
+            box-shadow: 0 0 6px #ff9f6e;
+        }
+
+        /* গ্রিড কার্ড স্টাইল - premium */
+        .thumbnails-grid {
+            margin-top: 1.8rem;
+        }
+
+        .grid-title {
+            font-size: 1.55rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            border-left: 6px solid #ff6a3d;
+            padding-left: 1rem;
+            background: linear-gradient(120deg, #f9f3e6, #ffcfaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
+
+        .video-card {
+            background: rgba(15, 22, 36, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 1.8rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 106, 61, 0.2);
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.5);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6a3d60;
+            box-shadow: 0 25px 35px -16px #ff6a3d;
+        }
+
+        .card-body {
+            padding: 1rem 1.2rem 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.85rem;
+        }
+
+        /* ফুটার গ্লাসমরফিক */
+        .professional-footer {
+            margin-top: 2.8rem;
+            background: rgba(8, 12, 22, 0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 106, 61, 0.3);
+        }
+
+        .copyright {
+            font-size: 0.7rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-btn {
+            background: rgba(255, 106, 61, 0.1);
+            border: 1px solid #ff6a3d50;
+            color: #ffcfaa;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .footer-btn:hover {
+            background: #ff6a3d30;
+            color: white;
+            border-color: #ff6a3d;
+        }
+
+        /* মডাল - premium */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem;
+        }
+
+        .modal-content {
+            background: rgba(18, 25, 45, 0.98);
+            backdrop-filter: blur(16px);
+            max-width: 360px;
+            width: 100%;
+            padding: 1.8rem;
+            border-radius: 2rem;
+            border: 1px solid #ffaa55cc;
+            color: #f0f3fa;
+            text-align: center;
+            box-shadow: 0 35px 55px -20px black;
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #ffaa66;
+        }
+
+        .modal-content p {
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .close-modal {
+            background: #ff6a3d;
+            border: none;
+            padding: 0.6rem 1.6rem;
+            border-radius: 3rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            background: #ff895f;
+            transform: scale(0.98);
+        }
+
+        button, .btn, .dot, .footer-btn {
+            touch-action: manipulation;
+        }
+
+        /* রেসপন্সিভ টুইক */
+        @media (max-width: 480px) {
+            body { padding: 0.8rem; }
+            .video-title, .card-title { font-size: 0.9rem; }
+            .btn { font-size: 0.75rem; padding: 0.6rem 0.2rem; }
+        }
     </style>
 </head>
-<body class="max-w-md mx-auto">
+<body>
 
-    <!-- Loader -->
-    <div id="loader" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
-    </div>
-
-    <!-- Main Container -->
-    <div id="app-container" class="min-h-screen flex flex-col main-page active">
-        <!-- Header -->
-        <header class="flex items-center justify-between p-4 sticky top-0 z-10 bg-white/90 backdrop-blur-md dark:bg-gray-800/90 border-b border-gray-200 dark:border-gray-700">
-            <h1 class="text-xl font-bold text-slate-800 dark:text-white">💰 Smart Money Pro</h1>
-            <div class="flex items-center gap-4">
-                <button id="dark-mode-toggle" class="bg-transparent border-none cursor-pointer">
-                    <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5 text-slate-800 dark:text-white"></i>
-                </button>
-                <i data-lucide="user" class="w-5 h-5 cursor-pointer text-slate-800 dark:text-white" onclick="navigateTo('profile-page')"></i>
+<div id="mainContent" class="main-content">
+    <div class="container">
+        <div class="slider-section">
+            <div class="section-title">
+                <i class="fas fa-fire"></i> ট্রেন্ডিং নাও
             </div>
-        </header>
-
-        <main class="flex-1">
-            <!-- Home Page -->
-            <div id="home-page" class="p-4 space-y-5 sub-page active">
-                <!-- Balance Card -->
-                <div class="card-bg p-5 rounded-2xl flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm">Your Balance</p>
-                        <p class="text-3xl font-bold text-slate-800 dark:text-white">$<span id="coin-balance">0.00</span></p>
-                    </div>
-                    <button id="home-withdraw-btn" class="bg-orange-500 text-white font-semibold px-5 py-2 rounded-xl">Withdraw</button>
-                </div>
-
-                <!-- Tasks Section -->
-                <section>
-                    <div class="flex justify-between items-center mb-3">
-                        <div>
-                            <h2 class="text-lg font-bold text-slate-800 dark:text-white">Daily Tasks</h2>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">Complete tasks and earn money</p>
-                        </div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Ads left: <span id="ads-left-count">0/10</span></p>
-                    </div>
-                    
-                    <div class="space-y-3">
-                        <!-- AdsGram Ad Button ONLY -->
-                        <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 rounded-xl text-white shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">🎬</span>
-                                    <div>
-                                        <h3 class="font-bold">Watch Adsgram Ad</h3>
-                                        <p class="text-xs">Earn $0.50 per ad</p>
-                                    </div>
-                                </div>
-                                <button id="ad-claim-btn" class="bg-white text-orange-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md transition transform active:scale-95">
-                                    Watch
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Daily Jobs -->
-                        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 rounded-xl text-white">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">💼</span>
-                                    <div>
-                                        <h3 class="font-bold">Daily Jobs</h3>
-                                        <p class="text-xs">20 jobs - $0.50 each</p>
-                                    </div>
-                                </div>
-                                <button class="bg-white text-blue-600 font-bold px-5 py-2 rounded-xl text-sm" onclick="navigateTo('daily-jobs-page')">Start</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack"></div>
             </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+            <p style="font-size:0.7rem; margin-top:12px; text-align:center; opacity:0.8; display:flex; align-items:center; justify-content:center; gap:5px;">
+                <i class="fas fa-video" style="color:#ff6a3d;"></i> প্রতিটি বাটন আনলক করতে ২টি এড দেখুন (🔓 0/2)
+            </p>
+        </div>
 
-            <!-- Wallet Page -->
-            <div id="wallet-page" class="p-4 space-y-5 sub-page">
-                <h2 class="text-xl font-bold text-center text-slate-800 dark:text-white">💰 My Wallet</h2>
-                <div class="card-bg p-5 rounded-2xl">
-                    <h3 class="font-bold text-slate-800 dark:text-white mb-3">Withdraw Funds</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Current Balance: <span class="font-bold text-orange-500">$<span id="wallet-coin-balance">0.00</span></span></p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Minimum Withdrawal: $<span id="min-withdrawal-info">20</span></p>
-                    <input id="withdraw-amount" type="number" placeholder="Enter amount" class="w-full input-field mb-3">
-                    <select id="withdraw-method" class="w-full input-field mb-3">
-                        <option value="">Select Method</option>
-                        <option value="Bkash">bKash</option>
-                        <option value="Nagad">Nagad</option>
-                        <option value="Rocket">Rocket</option>
-                    </select>
-                    <div id="payment-details-container"></div>
-                    <button id="withdraw-btn" class="w-full btn-accent py-3 rounded-xl mt-2">Request Withdrawal</button>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-800 dark:text-white mb-3">Withdrawal History</h3>
-                    <div id="withdrawal-history-list" class="space-y-2"></div>
-                </div>
-            </div>
-
-            <!-- Profile Page -->
-            <div id="profile-page" class="p-4 space-y-5 sub-page">
-                <h2 class="text-xl font-bold text-center text-slate-800 dark:text-white">Profile</h2>
-                <div class="flex flex-col items-center">
-                    <img id="profile-photo" src="https://placehold.co/100x100/ff8c00/white?text=U" class="rounded-full w-24 h-24 mb-2">
-                    <h2 id="profile-name" class="text-xl font-bold text-slate-800 dark:text-white">User</h2>
-                    <p id="profile-username" class="text-gray-500 dark:text-gray-400">@username</p>
-                </div>
-                <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold text-slate-800 dark:text-white mb-2">Account Info</h3>
-                    <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Joined via:</span><span id="joined-via" class="text-slate-800 dark:text-white">Telegram</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">User ID:</span><span id="profile-user-id" class="text-slate-800 dark:text-white">-</span></div>
-                </div>
-                <div id="admin-access" class="hidden">
-                    <button onclick="navigateTo('admin-panel')" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Admin Panel</button>
-                </div>
-            </div>
-            
-            <!-- Daily Jobs Page -->
-            <div id="daily-jobs-page" class="p-4 space-y-4 sub-page">
-                <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('home-page')" class="text-gray-600 dark:text-gray-400"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-white">Daily Jobs</h2>
-                </div>
-                <div class="card-bg p-4 text-center rounded-2xl">
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">Click on any job below, watch 15 seconds ad and earn $0.50!</p>
-                    <div class="flex justify-center gap-4 mt-2 text-xs">
-                        <span class="text-green-500">● Available</span>
-                        <span class="text-red-500">● Cooldown (8 hours)</span>
-                    </div>
-                </div>
-                <div id="daily-jobs-container" class="space-y-3"></div>
-            </div>
-
-            <!-- Admin Panel -->
-            <div id="admin-panel" class="p-4 space-y-5 sub-page">
-                <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('profile-page')" class="text-gray-600 dark:text-gray-400"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-white">Admin Panel</h2>
-                </div>
-                <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold text-slate-800 dark:text-white mb-3">Bonus Distribution</h3>
-                    <input id="bonus-amount" type="number" placeholder="Bonus amount in $" class="w-full input-field mb-3">
-                    <button id="send-bonus-btn" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold">Send Bonus to All</button>
-                </div>
-                <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold text-slate-800 dark:text-white mb-3">Zone Status</h3>
-                    <div id="zone-stats" class="space-y-1 text-sm">
-                        <div class="flex justify-between"><span class="text-slate-800 dark:text-white">AdsGram:</span><span id="adsgram-status">✅ Active</span></div>
-                        <div class="flex justify-between"><span class="text-slate-800 dark:text-white">Zone 9730885:</span><span id="zone1-status">⏳</span></div>
-                        <div class="flex justify-between"><span class="text-slate-800 dark:text-white">Zone 9500387:</span><span id="zone2-status">⏳</span></div>
-                        <div class="flex justify-between"><span class="text-slate-800 dark:text-white">Zone 9715370:</span><span id="zone3-status">⏳</span></div>
-                    </div>
-                </div>
-                <button id="send-manual-report" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">📤 Send Manual Report</button>
-            </div>
-        </main>
-
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav fixed bottom-0 left-0 right-0 max-w-md mx-auto grid grid-cols-3 items-center py-2 card-bg border-t border-gray-200 dark:border-gray-700">
-            <a href="#" class="nav-link active flex flex-col items-center" data-page="home-page"><i data-lucide="home" class="w-5 h-5"></i><span class="text-xs">Home</span></a>
-            <a href="#" class="nav-link flex flex-col items-center" data-page="wallet-page"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-xs">Wallet</span></a>
-            <a href="#" class="nav-link flex flex-col items-center" data-page="daily-jobs-page"><i data-lucide="briefcase" class="w-5 h-5"></i><span class="text-xs">Jobs</span></a>
-        </nav>
-    </div>
-
-    <!-- Custom Alert -->
-    <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-sm text-center">
-            <p id="alert-message" class="mb-4 text-slate-800 dark:text-white"></p>
-            <button id="alert-ok-btn" class="btn-accent px-6 py-2 rounded-xl">OK</button>
+        <div class="thumbnails-grid">
+            <div class="grid-title"><i class="fas fa-layer-group"></i> এক্সক্লুসিভ কালেকশন</div>
+            <div class="grid-container" id="videoGridContainer"></div>
         </div>
     </div>
 
-    <script>
-        // ==================== CONFIGURATION ====================
-        const CONFIG = {
-            app: {
-                name: "Orange lemon 🍋",
-                minWithdrawal: 20,
-                dailyAdLimit: { adsgram: 10 },
-                adReward: 0.50,
-                dailyJobReward: 0.50
-            },
-            adsgram: { enabled: true, blockId: "int-27970", rewardAmount: 0.50 },
-            social: { verificationLink: "https://t.me/Smart_money_pro_xbot" },
-            bot: { adminChatId: "7793213912", reportChannelId: "-1003331749273" },
-            
-            dailyJobLinks: {
-                job1: "https://omg10.com/4/9717825", job2: "https://omg10.com/4/9429975", job3: "https://omg10.com/4/9446627",
-                job4: "https://encouragementglutton.com/vc1xew7t?key=9a97915b9241db71d8f53e974a75a975",
-                job5: "https://www.effectivegatecpm.com/hjt54qy2f?key=850e1a1f668e2f8cf8fbc7662317181b",
-                job6: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp", job7: "https://omg10.com/4/10338067",
-                job8: "https://encouragementglutton.com/uaw9tkid6b?key=c49281ab14f9eb6a872d63173ea7bf9c",
-                job9: "https://omg10.com/4/9570590", job10: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
-                job11: "https://omg10.com/4/9725607", job12: "https://t.me/f785OSC7KPk4MGJl4abot?startapp",
-                job13: "https://www.effectivegatecpm.com/rz01szx1?key=3dfb2fe6741dd7e2c5f8969bd11701c3",
-                job14: "https://www.effectivegatecpm.com/hjt54qy2f?key=850e1a1f668e2f8cf8fbc7662317181b",
-                job15: "https://www.effectivegatecpm.com/mqb7j0cy4?key=41aca66d8ffc76b0227f65cb991591ad",
-                job16: "https://omg10.com/4/9446627", job17: "https://omg10.com/4/9429975",
-                job18: "https://omg10.com/4/9717825", job19: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
-                job20: "https://t.me/khelahobe07_bot?startapp"
-            }
-        };
+    <footer class="professional-footer">
+        <div class="copyright"><i class="far fa-copyright"></i> ২০২৬ সিনেমা স্ট্রিম</div>
+        <div class="footer-buttons">
+            <button class="footer-btn" id="privacyBtn"><i class="fas fa-shield-alt"></i> প্রাইভেসি</button>
+            <button class="footer-btn" id="aboutBtn"><i class="fas fa-info-circle"></i> সম্পর্কে</button>
+        </div>
+    </footer>
 
-        // ==================== VARIABLES ====================
-        let currentUser = null, userData = null, currentJobTracking = null;
-        let isAdsGramShowing = false, adsGramReady = false, AdController = null;
-        let adsGramCount = 0;
-        let dailyStats = { date: new Date().toISOString().split('T')[0], newUsers: 0, totalUsers: 0, adsGramWatched: 0, jobsCompleted: 0, totalWithdrawals: 0, totalWithdrawalAmount: 0 };
-        
-        const tg = window.Telegram.WebApp;
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">গোপনীয়তা নীতি</h3>
+            <div id="modalBody">
+                <p>🔒 আপনার তথ্য সুরক্ষিত। শুধুমাত্র বিজ্ঞাপন দেখে কন্টেন্ট আনলক করুন।</p>
+            </div>
+            <button class="close-modal">বন্ধ করুন</button>
+        </div>
+    </div>
+</div>
 
-        // ==================== ADSGRAM INITIALIZATION ====================
-        function initializeAdsGram() {
-            console.log('🔧 Initializing AdsGram with blockId:', CONFIG.adsgram.blockId);
-            if (!CONFIG.adsgram.enabled) return;
-            if (typeof window.Adsgram !== 'undefined' && window.Adsgram) {
-                try {
-                    AdController = window.Adsgram.init({ blockId: CONFIG.adsgram.blockId, debug: true });
-                    if (AdController && typeof AdController.show === 'function') {
-                        adsGramReady = true;
-                        document.getElementById('ad-claim-btn') && (document.getElementById('ad-claim-btn').disabled = false);
-                        document.getElementById('adsgram-status') && (document.getElementById('adsgram-status').innerHTML = '✅ Active');
-                    } else { console.error('AdController invalid'); retryAdsGram(); }
-                } catch(e) { console.error('AdsGram init error:', e); retryAdsGram(); }
-            } else { console.log('AdsGram SDK loading...'); retryAdsGram(); }
-        }
-        
-        function retryAdsGram() { setTimeout(initializeAdsGram, 2000); }
-        
-        async function claimAdsGramReward() {
-            if (!adsGramReady) { showAlert("AdsGram is initializing..."); initializeAdsGram(); return; }
-            if (isAdsGramShowing) { showAlert("Ad is already playing..."); return; }
-            
-            const today = new Date().toISOString().split('T')[0];
-            if (adsGramCount >= CONFIG.app.dailyAdLimit.adsgram) {
-                return showAlert(`Daily ad limit reached (${adsGramCount}/10). Try again tomorrow.`);
-            }
-            
-            isAdsGramShowing = true;
-            const btn = document.getElementById('ad-claim-btn');
-            btn && (btn.innerHTML = '⏳ Loading...', btn.disabled = true);
-            
-            try {
-                showAlert("Loading ad...");
-                const result = await AdController.show();
-                console.log('Ad completed:', result);
-                adsGramCount++;
-                userData.adsGramCount = adsGramCount;
-                userData.lastAdsGramDate = today;
-                userData.balance += CONFIG.app.adReward;
-                dailyStats.adsGramWatched++;
-                saveUserToStorage(userData);
-                saveDailyStats();
-                updateUI();
-                showAlert(`🎉 Earned $${CONFIG.app.adReward.toFixed(2)}! (${adsGramCount}/10)`);
-            } catch(e) { console.error('AdsGram error:', e); showAlert("Failed to show ad. Please try again."); }
-            finally { isAdsGramShowing = false; btn && (btn.innerHTML = 'Watch', btn.disabled = false); }
-        }
-
-        // ==================== STORAGE FUNCTIONS ====================
-        function loadUserFromStorage(userId) { const stored = localStorage.getItem(`user_${userId}`); return stored ? JSON.parse(stored) : null; }
-        function saveUserToStorage(data) { localStorage.setItem(`user_${currentUser.id}`, JSON.stringify(data)); }
-        function loadWithdrawals() { return JSON.parse(localStorage.getItem(`withdrawals_${currentUser?.id}`) || '[]'); }
-        function saveWithdrawal(withdrawal) { const w = loadWithdrawals(); w.push(withdrawal); localStorage.setItem(`withdrawals_${currentUser.id}`, JSON.stringify(w)); dailyStats.totalWithdrawals++; dailyStats.totalWithdrawalAmount += withdrawal.amount; saveDailyStats(); }
-        function loadDailyJobs() { return JSON.parse(localStorage.getItem(`daily_jobs_${currentUser?.id}`) || '[]'); }
-        function saveDailyJob(job) { const jobs = loadDailyJobs(); jobs.push(job); localStorage.setItem(`daily_jobs_${currentUser.id}`, JSON.stringify(jobs)); }
-        function loadDailyStats() { const today = new Date().toISOString().split('T')[0]; const saved = localStorage.getItem(`stats_${today}`); if(saved) dailyStats = JSON.parse(saved); else saveDailyStats(); }
-        function saveDailyStats() { localStorage.setItem(`stats_${dailyStats.date}`, JSON.stringify(dailyStats)); }
-        function incrementStat(stat) { dailyStats[stat]++; saveDailyStats(); }
-
-        // ==================== CORE FUNCTIONS ====================
-        function initTelegramApp() {
-            tg.ready(); tg.expand();
-            const user = tg.initDataUnsafe.user;
-            if(!user) { console.error("No user"); return; }
-            currentUser = { id: user.id.toString(), firstName: user.first_name || '', username: user.username || '', photoUrl: user.photo_url || '' };
-            loadUserData();
-        }
-        
-        function loadUserData() {
-            userData = loadUserFromStorage(currentUser.id);
-            const today = new Date().toISOString().split('T')[0];
-            if(!userData) {
-                userData = { uid: currentUser.id, name: currentUser.firstName || 'User', username: currentUser.username || 'N/A', balance: 0, adsGramCount: 0, lastAdsGramDate: today, createdAt: new Date().toISOString() };
-                incrementStat('newUsers');
-                saveUserToStorage(userData);
+<script>
+    // টেলিগ্রাম মিনি অ্যাপ
+    let tg = window.Telegram?.WebApp;
+    if(tg) {
+        tg.expand();
+        tg.ready();
+        console.log("টেলিগ্রাম মিনি অ্যাপ রেডি");
+    }
+    
+    // ======================= লিংক রাউন্ড রবিন =======================
+    const TRAFFIC_LINKS = [
+        "https://all-video-hub.pages.dev/",
+        "https://omg10.com/4/9429975",
+        "https://omg10.com/4/9717825"
+    ];
+    
+    let linkIndex = 0;
+    try {
+        const saved = sessionStorage.getItem('traffic_link_index');
+        if(saved !== null) linkIndex = parseInt(saved) % TRAFFIC_LINKS.length;
+    } catch(e) {}
+    
+    function getNextTrafficLink() {
+        const link = TRAFFIC_LINKS[linkIndex % TRAFFIC_LINKS.length];
+        linkIndex++;
+        try { sessionStorage.setItem('traffic_link_index', linkIndex); } catch(e) {}
+        return link;
+    }
+    
+    const thumbnailLinks = [
+        "https://i.ibb.co.com/M5sn0X7J/1775956953020.jpg",
+        "https://i.ibb.co.com/kr3rBRR/IMG-20260330-213725-843.jpg",
+        "https://i.ibb.co.com/x8HNBFTy/IMG-20260126-164724-422.jpg",
+        "https://i.ibb.co.com/1Ybszq1Q/IMG-20260114-223941-811.jpg",
+        "https://i.ibb.co.com/QFQRYfZD/IMG-20260427-200108-861.jpg"
+    ];
+    
+    const videoItems = [
+        { id:1, title:"🎬 প্রিমিয়াম ভিডিও ১", thumbUrl: thumbnailLinks[0] },
+        { id:2, title:"🎥 প্রিমিয়াম ভিডিও ২", thumbUrl: thumbnailLinks[1] },
+        { id:3, title:"📽️ এক্সক্লুসিভ কন্টেন্ট", thumbUrl: thumbnailLinks[2] },
+        { id:4, title:"🔥 স্পেশাল ভিডিও", thumbUrl: thumbnailLinks[3] },
+        { id:5, title:"⭐ আল্টিমেট এডিশন", thumbUrl: thumbnailLinks[4] },
+        { id:6, title:"🎞️ ট্রেন্ডিং নাও", thumbUrl: thumbnailLinks[0] }
+    ];
+    
+    function getVideoLink(videoId) { return getNextTrafficLink(); }
+    
+    const ADSGRAM_BLOCK_ID = "int-30481";
+    let mainAdController = null;
+    
+    function initAdsgramController(blockId) {
+        if (!window.Adsgram) return null;
+        try {
+            return window.Adsgram.init({ blockId: blockId, debug: false, debugBannerType: "RewardedVideo" });
+        } catch(e) { console.error(e); return null; }
+    }
+    
+    async function showAd(controller, onSuccess, onError) {
+        if (!controller) { if(onError) onError("AdController not initialized"); return false; }
+        const loadingNotif = showLoadingNotification("🎬 এড লোড হচ্ছে...");
+        try {
+            const result = await controller.show();
+            hideLoadingNotification(loadingNotif);
+            if (result && result.done === true) {
+                if(onSuccess) onSuccess();
+                return true;
             } else {
-                if(userData.lastAdsGramDate !== today) { userData.adsGramCount = 0; userData.lastAdsGramDate = today; }
-                saveUserToStorage(userData);
+                showNotification("⚠️ সম্পূর্ণ এড দেখুন! স্কিপ করবেন না।", false);
+                if(onError) onError("not completed");
+                return false;
             }
-            adsGramCount = userData.adsGramCount || 0;
-            updateUI();
-            checkAdminAccess();
-            navigateTo('home-page');
+        } catch (error) {
+            hideLoadingNotification(loadingNotif);
+            showNotification("❌ বিজ্ঞাপন লোড হয়নি! আবার চেষ্টা করুন।", false);
+            if(onError) onError(error);
+            return false;
         }
-        
-        function updateUI() {
-            document.getElementById('coin-balance') && (document.getElementById('coin-balance').innerText = userData.balance.toFixed(2));
-            document.getElementById('wallet-coin-balance') && (document.getElementById('wallet-coin-balance').innerText = userData.balance.toFixed(2));
-            document.getElementById('profile-name') && (document.getElementById('profile-name').innerText = userData.name);
-            document.getElementById('profile-username') && (document.getElementById('profile-username').innerText = '@' + userData.username);
-            document.getElementById('profile-user-id') && (document.getElementById('profile-user-id').innerText = currentUser.id);
-            document.getElementById('ads-left-count') && (document.getElementById('ads-left-count').innerText = `${adsGramCount}/10`);
+    }
+    
+    function showLoadingNotification(msg) {
+        const existing = document.querySelector('.loading-notification');
+        if(existing) existing.remove();
+        const div = document.createElement('div');
+        div.className = 'loading-notification';
+        div.innerHTML = `<i class="fas fa-spinner fa-pulse"></i> ${msg}<br><span style="font-size:0.75rem;">দয়া করে অপেক্ষা করুন</span>`;
+        document.body.appendChild(div);
+        return div;
+    }
+    function hideLoadingNotification(notif) { if(notif && notif.remove) notif.remove(); else document.querySelector('.loading-notification')?.remove(); }
+    function showNotification(msg, isSuccess = true) { if(tg) tg.showAlert(msg); else alert(msg); }
+    
+    // ======================= আনলক মেকানিজম =======================
+    let buttonStates = new Map();
+    function getButtonState(videoId, btnType) {
+        const key = `${videoId}_${btnType}`;
+        if(!buttonStates.has(key)) buttonStates.set(key, { current: 0, required: 2, unlocked: false });
+        return buttonStates.get(key);
+    }
+    function updateButtonUI(btn, state) {
+        if(!btn) return;
+        const span = btn.querySelector('.unlock-counter');
+        if(span) span.innerHTML = `🔓 ${state.current}/${state.required}`;
+        if(state.unlocked) {
+            btn.classList.remove('locked'); btn.classList.add('unlocked');
+            btn.disabled = false;
+        } else {
+            btn.classList.remove('unlocked'); btn.classList.add('locked');
+            btn.disabled = false;
         }
-        
-        function navigateTo(pageId) {
-            document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId) && document.getElementById(pageId).classList.add('active');
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'text-accent'));
-            document.querySelector(`.nav-link[data-page="${pageId}"]`) && document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active', 'text-accent');
-            if(pageId === 'wallet-page') loadWithdrawalHistory();
-            if(pageId === 'daily-jobs-page') { setupDailyJobs(); updateJobButtonStates(); }
+    }
+    function incrementAndCheck(videoId, btnType, btnElem) {
+        const state = getButtonState(videoId, btnType);
+        if(state.unlocked) return true;
+        state.current++;
+        updateButtonUI(btnElem, state);
+        if(state.current >= state.required) {
+            state.unlocked = true;
+            updateButtonUI(btnElem, state);
+            showNotification(`✅ বাটন আনলক! এখন ব্যবহার করতে পারেন।`, true);
+            return true;
+        } else {
+            showNotification(`📢 ${state.current}/${state.required} এড দেখেছেন। আরও ${state.required - state.current} টি দেখুন।`, true);
+            return false;
         }
-        
-        function showAlert(msg) { const a=document.getElementById('custom-alert'); document.getElementById('alert-message').innerText=msg; a.classList.remove('hidden'); document.getElementById('alert-ok-btn').onclick=()=>a.classList.add('hidden'); }
-        
-        function loadWithdrawalHistory() {
-            const w = loadWithdrawals();
-            const container = document.getElementById('withdrawal-history-list');
-            if(!container) return;
-            if(w.length===0) { container.innerHTML='<p class="text-center text-gray-500 dark:text-gray-400">No withdrawals yet</p>'; return; }
-            container.innerHTML = w.reverse().map(r => `<div class="card-bg p-3 rounded-xl flex justify-between"><div><p class="font-bold text-slate-800 dark:text-white">$${r.amount.toFixed(2)} - ${r.method}</p><p class="text-xs text-gray-500 dark:text-gray-400">${new Date(r.requestedAt).toLocaleDateString()}</p></div><span class="text-${r.status==='pending'?'yellow-500':'green-500'}">${r.status}</span></div>`).join('');
+    }
+    async function showAdForUnlock(videoId, btnType, btnElem, onComplete) {
+        if (!mainAdController) mainAdController = initAdsgramController(ADSGRAM_BLOCK_ID);
+        if (!mainAdController) { showNotification("বিজ্ঞাপন সিস্টেম প্রস্তুত নয়!", false); return false; }
+        return await showAd(mainAdController, () => {
+            const unlocked = incrementAndCheck(videoId, btnType, btnElem);
+            if(onComplete) onComplete(unlocked);
+        }, () => { if(onComplete) onComplete(false); });
+    }
+    function performAction(videoId, btnType, btnElem, actionCb) {
+        const state = getButtonState(videoId, btnType);
+        if(state.unlocked) actionCb();
+        else showAdForUnlock(videoId, btnType, btnElem, (ok) => { if(ok) actionCb(); });
+    }
+    
+    function handleDownload(videoId, btn) {
+        performAction(videoId, 'download', btn, () => { window.open(getVideoLink(videoId), '_blank'); showNotification("🔗 রিডাইরেক্ট হচ্ছে...", true); });
+    }
+    function handleWatch(videoId, btn) {
+        performAction(videoId, 'watch', btn, () => { window.open(getVideoLink(videoId), '_blank'); showNotification("🎥 ভিডিও পেজে যাচ্ছেন...", true); });
+    }
+    function onPlayIconClick(videoId) {
+        const state = getButtonState(videoId, 'watch');
+        if(state.unlocked) window.open(getVideoLink(videoId), '_blank');
+        else showNotification("⚠️ 'ওয়াচ নাও' বাটনটি প্রথমে আনলক করুন!", false);
+    }
+    
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
+    function createButtonHTML(item, type, icon, label) {
+        const state = getButtonState(item.id, type);
+        const btnClass = state.unlocked ? 'unlocked' : 'locked';
+        const colorClass = type === 'download' ? 'btn-download' : 'btn-watch';
+        return `<button class="btn ${colorClass} ${btnClass}" data-video-id="${item.id}" data-btn-type="${type}"><i class="fas ${icon}"></i> ${label}<span class="unlock-counter">🔓 ${state.current}/${state.required}</span></button>`;
+    }
+    
+    function buildCarouselAndGrid() {
+        const track = document.getElementById('carouselTrack');
+        track.innerHTML = '';
+        videoItems.forEach(item => {
+            const slide = document.createElement('div'); slide.className = 'carousel-slide';
+            slide.innerHTML = `<div class="thumb-video-card"><div class="thumb-wrapper" data-video-id="${item.id}"><img class="thumb-img" src="${item.thumbUrl}" alt="thumb" onerror="this.src='https://placehold.co/400x225?text=No+Image'"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div><div class="card-info"><div class="video-title"><i class="fas fa-crown" style="font-size:0.8rem;"></i> ${escapeHtml(item.title)}</div><div class="button-group">${createButtonHTML(item, 'download', 'fa-download', 'ডাউনলোড')}${createButtonHTML(item, 'watch', 'fa-play', 'ওয়াচ নাও')}</div></div></div>`;
+            track.appendChild(slide);
+        });
+        const grid = document.getElementById('videoGridContainer');
+        grid.innerHTML = '';
+        videoItems.forEach(item => {
+            const card = document.createElement('div'); card.className = 'video-card';
+            card.innerHTML = `<div class="thumb-wrapper" data-video-id="${item.id}"><img class="thumb-img" src="${item.thumbUrl}" onerror="this.src='https://placehold.co/400x225?text=No+Image'"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div><div class="card-body"><div class="card-title"><i class="fas fa-star" style="color:#ffaa44;"></i> ${escapeHtml(item.title)}</div><div class="btn-group">${createButtonHTML(item, 'download', 'fa-download', 'ডাউনলোড')}${createButtonHTML(item, 'watch', 'fa-eye', 'ওয়াচ নাও')}</div></div>`;
+            grid.appendChild(card);
+        });
+        attachEventListeners();
+    }
+    
+    function attachEventListeners() {
+        document.querySelectorAll('.btn-download, .btn-watch').forEach(btn => {
+            btn.removeEventListener('click', handleBtnClick);
+            btn.addEventListener('click', handleBtnClick);
+        });
+        document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
+            const vid = parseInt(wrapper.getAttribute('data-video-id'));
+            wrapper.removeEventListener('click', (e) => {});
+            wrapper.addEventListener('click', (e) => { e.stopPropagation(); onPlayIconClick(vid); });
+        });
+    }
+    function handleBtnClick(e) {
+        e.stopPropagation();
+        const btn = e.currentTarget;
+        const videoId = parseInt(btn.getAttribute('data-video-id'));
+        const type = btn.getAttribute('data-btn-type');
+        if(type === 'download') handleDownload(videoId, btn);
+        else if(type === 'watch') handleWatch(videoId, btn);
+    }
+    
+    // স্লাইডার লজিক
+    let currentSlide = 0, autoInterval;
+    const totalSlides = videoItems.length;
+    function buildDotsAndSlider() {
+        const dotsDiv = document.getElementById('carouselDots'); dotsDiv.innerHTML = '';
+        for(let i=0;i<totalSlides;i++) {
+            const dot = document.createElement('div'); dot.classList.add('dot');
+            if(i===currentSlide) dot.classList.add('active');
+            dot.addEventListener('click', () => { goToSlide(i); resetAuto(); });
+            dotsDiv.appendChild(dot);
         }
-        
-        async function handleWithdrawal() {
-            const amount = parseFloat(document.getElementById('withdraw-amount').value);
-            const method = document.getElementById('withdraw-method').value;
-            const paymentDetail = document.getElementById('payment-detail-input')?.value;
-            if(!amount || amount<CONFIG.app.minWithdrawal) return showAlert(`Minimum withdrawal is $${CONFIG.app.minWithdrawal}`);
-            if(amount>userData.balance) return showAlert("Insufficient balance");
-            if(!method || !paymentDetail) return showAlert("Please fill all details");
-            userData.balance -= amount;
-            saveWithdrawal({ userId: currentUser.id, amount, method, paymentDetails: paymentDetail, status: "pending", requestedAt: new Date().toISOString() });
-            saveUserToStorage(userData);
-            updateUI();
-            loadWithdrawalHistory();
-            showAlert("Withdrawal request submitted!");
-            document.getElementById('withdraw-amount').value = '';
-            document.getElementById('withdraw-method').value = '';
-            document.getElementById('payment-details-container').innerHTML = '';
-        }
-        
-        function updateDynamicPaymentFields() {
-            const m = document.getElementById('withdraw-method').value;
-            const ph = m==='Bkash'?'bKash Number': m==='Nagad'?'Nagad Number': m==='Rocket'?'Rocket Number':'Payment Details';
-            document.getElementById('payment-details-container').innerHTML = `<input id="payment-detail-input" type="text" placeholder="${ph}" class="w-full input-field">`;
-        }
-        
-        function setupDailyJobs() {
-            const container = document.getElementById('daily-jobs-container');
-            if(!container) return;
-            container.innerHTML = '';
-            for(let i=1;i<=20;i++) {
-                const link = CONFIG.dailyJobLinks[`job${i}`];
-                container.innerHTML += `<div class="card-bg p-3 rounded-xl flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">${i}</div><div><h3 class="font-medium text-slate-800 dark:text-white">Job ${i}</h3><p class="text-xs text-gray-500 dark:text-gray-400">Earn $0.50</p></div></div><button id="job-btn-${i}" data-link="${link}" class="job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Start</button></div>`;
-            }
-            for(let i=1;i<=20;i++) document.getElementById(`job-btn-${i}`)?.addEventListener('click',()=>handleJobClick(i));
-        }
-        
-        async function updateJobButtonStates() {
-            if(!currentUser) return;
-            const completed = loadDailyJobs();
-            const lastCompletions = {};
-            completed.forEach(job => { if(!lastCompletions[job.jobId] || new Date(job.completedAt) > lastCompletions[job.jobId]) lastCompletions[job.jobId] = new Date(job.completedAt); });
-            for(let i=1;i<=20;i++) {
-                const btn = document.getElementById(`job-btn-${i}`);
-                if(!btn) continue;
-                const last = lastCompletions[i];
-                if(last && (Date.now() - last.getTime()) < 8*3600000) {
-                    const rem = 8*3600000 - (Date.now() - last.getTime());
-                    const h = Math.floor(rem/3600000), m = Math.floor((rem%3600000)/60000);
-                    btn.innerHTML = `${h}h ${m}m`;
-                    btn.className = 'bg-red-600 text-white px-4 py-2 rounded-lg text-sm opacity-70';
-                    btn.disabled = true;
-                } else { btn.innerHTML = 'Start'; btn.className = 'job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm'; btn.disabled = false; }
-            }
-        }
-        
-        async function handleJobClick(jobId) {
-            const btn = document.getElementById(`job-btn-${jobId}`);
-            if(btn.disabled) return showAlert("This job is on cooldown!");
-            const link = btn.getAttribute('data-link');
-            if(!link || link==='#') return showAlert("No link available");
-            currentJobTracking = { jobId, startTime: Date.now(), link };
-            tg.openLink(link);
-            showAlert("Watch the ad, come back after 15 seconds to claim reward!");
-            setTimeout(() => { if(currentJobTracking?.jobId === jobId) completeJob(jobId); }, 15000);
-        }
-        
-        async function completeJob(jobId) {
-            saveDailyJob({ userId: currentUser.id, jobId, completedAt: new Date().toISOString(), coinsEarned: CONFIG.app.dailyJobReward });
-            userData.balance += CONFIG.app.dailyJobReward;
-            incrementStat('jobsCompleted');
-            saveUserToStorage(userData);
-            updateUI();
-            updateJobButtonStates();
-            showAlert(`🎉 Earned $${CONFIG.app.dailyJobReward.toFixed(2)}!`);
-            currentJobTracking = null;
-        }
-        
-        document.addEventListener('visibilitychange', () => { if(!document.hidden && currentJobTracking && (Date.now()-currentJobTracking.startTime)>=15000) completeJob(currentJobTracking.jobId); });
-        
-        function checkAdminAccess() { if(currentUser?.id === CONFIG.bot.adminChatId) document.getElementById('admin-access')?.classList.remove('hidden'); }
-        
-        async function sendBonusToAllUsers() {
-            const amount = parseFloat(document.getElementById('bonus-amount').value);
-            if(!amount || isNaN(amount)) return showAlert("Enter bonus amount");
-            for(let i=0;i<localStorage.length;i++) { const key=localStorage.key(i); if(key?.startsWith('user_')) { const u=JSON.parse(localStorage.getItem(key)); u.balance+=amount; localStorage.setItem(key,JSON.stringify(u)); } }
-            userData = loadUserFromStorage(currentUser.id);
-            updateUI();
-            showAlert(`$${amount.toFixed(2)} bonus sent to all users!`);
-        }
-        
-        async function sendReport() {
-            const msg = `📊 Smart Money Pro Report\n📅 ${new Date().toLocaleString()}\n👥 Total Users: ${dailyStats.totalUsers}\n💰 Today's Earnings: AdsGram:${dailyStats.adsGramWatched}\n💵 Total Withdrawals: $${dailyStats.totalWithdrawalAmount.toFixed(2)}`;
-            try { await fetch(`https://api.telegram.org/bot7793213912:AAFvPB1DZ8nrkUzXpwZPeXxplw6BNrirPxs/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id:CONFIG.bot.reportChannelId, text:msg }) }); } catch(e){}
-        }
-        
-        function setupEventListeners() {
-            document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',e=>{ e.preventDefault(); navigateTo(l.dataset.page); }));
-            document.getElementById('ad-claim-btn')?.addEventListener('click', claimAdsGramReward);
-            document.getElementById('withdraw-btn')?.addEventListener('click', handleWithdrawal);
-            document.getElementById('home-withdraw-btn')?.addEventListener('click', ()=>navigateTo('wallet-page'));
-            document.getElementById('withdraw-method')?.addEventListener('change', updateDynamicPaymentFields);
-            document.getElementById('send-bonus-btn')?.addEventListener('click', sendBonusToAllUsers);
-            document.getElementById('send-manual-report')?.addEventListener('click', ()=>{ sendReport(); showAlert("Report sent!"); });
-            document.getElementById('dark-mode-toggle')?.addEventListener('click', ()=>{ document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light'); });
-            if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark-mode');
-        }
-        
-        window.onload = () => { lucide.createIcons(); setupEventListeners(); initTelegramApp(); loadDailyStats(); initializeAdsGram(); setInterval(updateJobButtonStates, 60000); };
-        window.navigateTo = navigateTo; window.showAlert = showAlert;
-    </script>
+        goToSlide(0); startAuto();
+    }
+    function goToSlide(idx) { if(idx<0) idx=0; if(idx>=totalSlides) idx=totalSlides-1; currentSlide=idx; document.getElementById('carouselTrack').style.transform = `translateX(-${currentSlide*100}%)`; document.querySelectorAll('.dot').forEach((d,i)=>{ if(i===currentSlide) d.classList.add('active'); else d.classList.remove('active'); }); }
+    function nextSlide() { goToSlide((currentSlide+1)%totalSlides); }
+    function startAuto() { if(autoInterval) clearInterval(autoInterval); autoInterval = setInterval(nextSlide, 4500); }
+    function resetAuto() { if(autoInterval){ clearInterval(autoInterval); startAuto(); } }
+    
+    // মডাল
+    const modal = document.getElementById('infoModal'), modalTitle = document.getElementById('modalTitle'), modalBodyDiv = document.getElementById('modalBody');
+    function showPrivacy() { modalTitle.innerText = "গোপনীয়তা ও নীতি"; modalBodyDiv.innerHTML = `<p>📜 প্রতিটি বাটন আনলক করতে ২টি এড আবশ্যক।</p><p>🔒 কোন ব্যক্তিগত ডেটা সংরক্ষণ করা হয় না।</p><p>✅ এড শেষ হতেই লিংকে নিয়ে যাওয়া হবে।</p>`; modal.style.display = 'flex'; }
+    function showAbout() { modalTitle.innerText = "📺 আমাদের সম্পর্কে"; modalBodyDiv.innerHTML = `<p>🎬 সিনেমা স্ট্রিম - আধুনিক ভিডিও পোর্টাল</p><p>⚠️ এড সম্পূর্ণ দেখুন, অন্যথায় কাউন্ট বাড়বেনা!</p><p>🔄 ট্রাফিক ৩টি লিংকে সমানভাবে বিতরণ হয়।</p>`; modal.style.display = 'flex'; }
+    document.getElementById('privacyBtn').addEventListener('click', showPrivacy);
+    document.getElementById('aboutBtn').addEventListener('click', showAbout);
+    document.querySelector('.close-modal').addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => { if(e.target === modal) modal.style.display = 'none'; });
+    
+    function waitForAdsgram() {
+        return new Promise((resolve) => {
+            if(window.Adsgram) resolve(true);
+            else { let attempts=0; const itv=setInterval(()=>{ if(window.Adsgram){ clearInterval(itv); resolve(true); } else if(attempts++>40){ clearInterval(itv); resolve(false); } }, 200); }
+        });
+    }
+    
+    async function init() {
+        buildCarouselAndGrid();
+        buildDotsAndSlider();
+        const caro = document.querySelector('.carousel-container');
+        if(caro) { caro.addEventListener('mouseenter',()=>{ if(autoInterval) clearInterval(autoInterval); }); caro.addEventListener('mouseleave', startAuto); }
+        await waitForAdsgram();
+        if(window.Adsgram) { mainAdController = initAdsgramController(ADSGRAM_BLOCK_ID); console.log("✅ এডসগ্রাম চালু"); }
+        else showNotification("⚠️ বিজ্ঞাপন সিস্টেম লোড হয়নি! রিফ্রেশ করুন।", false);
+    }
+    init();
+</script>
 </body>
 </html>
